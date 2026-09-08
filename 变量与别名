@@ -1,0 +1,24 @@
+# 变量与别名
+##变量
+[root@server3 testdir]# touch {1..9}.txt
+[root@server3 testdir]# ls
+1.txt  2.txt  3.txt  4.txt  5.txt  6.txt  7.txt  8.txt  9.txt  test.txt
+[root@server3 testdir]# export color=blue
+[root@server3 testdir]# echo $color
+blue
+[root@server3 testdir]# unset color
+[root@server3 testdir]# echo $color
+
+
+
+##别名 别名是用来定义自定义命令的
+[root@server3 testdir]# alias del='rm'
+[root@server3 testdir]# ls
+1.txt  2.txt  3.txt  4.txt  5.txt  6.txt  7.txt  8.txt  9.txt  test.txt
+[root@server3 testdir]# del 1.txt
+rm: remove regular empty file '1.txt'? y
+[root@server3 testdir]# ls
+2.txt  3.txt  4.txt  5.txt  6.txt  7.txt  8.txt  9.txt  test.txt
+[root@server3 testdir]# unalias del
+[root@server3 testdir]# del 2.txt
+bash: del: command not found...
