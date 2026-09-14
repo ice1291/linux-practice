@@ -2,7 +2,7 @@
 ## lsblk 获取现有设备概览
 GPT与MBR分区： </br>
 MBR有4个分区，分为逻辑分区和扩展分区 </br>
-GPT有更多的空间存储分区 </br>
+GPT有更多的空间存储分区,**要设置该分区，fdisk 设备进入交互界面后需先输入g选项，让系统识别要创建GPT分区，否则直接n创建的是MBR分区** </br>
 ## 创建分区：fdisk 设备路径
 g：选择GPT类型分区 </br>
 n：创建分区（MBR分区，若想创建GPT分区必须先g） </br>
@@ -36,4 +36,7 @@ m：查看帮助 </br>
 6.持久化：echo "该设备 none swap defaults 0 0">> /etc/fstab </br>
 7.mount -a </br>
 
-## 标签和UUID
+## 标签和UUID 使用UUID绑定设备更稳定
+blkid 查看所有分区UUID </br>
+blkid | awk '/dev/sdc1 {print $2}' #输出该行UUID </br>
+
